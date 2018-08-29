@@ -36,7 +36,7 @@ class App extends Component {
 
   logout() {
     this.setState({ isUser: false });
-    swal("Info!", "You are logged out succesfully", "Info");
+    swal("Info!", "You are logged out succesfully", "info");
   }
 
   add() {
@@ -169,8 +169,14 @@ class App extends Component {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="registermodalLabel">
-                Sign Up
+                {this.state.currentIndex != null && (
+                  <p>
+                    You are editing item # {this.state.currentIndex + 1}{" "}
+                    currently
+                  </p>
+                )}
               </h5>
+
               <button
                 type="button"
                 className="close"
@@ -426,29 +432,6 @@ class App extends Component {
 
     return (
       <div style={{ marginBottom: "50px" }}>
-        <hr />
-        <input
-          type="text"
-          placeholder="Enter something"
-          onChange={this.updateText}
-          value={this.state.text}
-        />
-        {currentIndex == null ? (
-          <button onClick={this.add} className="btn btn-danger">
-            Add
-          </button>
-        ) : (
-          <span>
-            <button onClick={this.updateTodo}>Update</button>
-            <button onClick={this.cancel}>Cancel</button>
-          </span>
-        )}
-        <hr />
-        {currentIndex != null && (
-          <p>You are editing item # {currentIndex + 1} currently</p>
-        )}
-        {/* {this.renderTodos()} */}
-
         <div className="container">
           <table className="table table-bordered table-hover">
             <thead className="thead-dark">
